@@ -51,6 +51,9 @@
 #define X_DIAG_PIN                          PG6   // X-STOP
 #define Y_DIAG_PIN                          PG9   // Y-STOP
 #define Z_DIAG_PIN                          PG10  // Z-STOP
+#define I_DIAG_PIN                         PG11  // Z2-STOP
+#define J_DIAG_PIN                         PG12  // E0DET
+#define K_DIAG_PIN                         PG13  // E1DET
 #define Z2_DIAG_PIN                         PG11  // Z2-STOP
 #define E0_DIAG_PIN                         PG12  // E0DET
 #define E1_DIAG_PIN                         PG13  // E1DET
@@ -138,6 +141,10 @@
   #define Z_STOP_PIN                  Z_DIAG_PIN  // Z-STOP
 #endif
 
+#define I_STOP_PIN                  I_DIAG_PIN
+#define J_STOP_PIN                  J_DIAG_PIN
+#define K_STOP_PIN                  K_DIAG_PIN
+
 #undef NEEDS_X_MINMAX
 #undef NEEDS_Y_MINMAX
 #undef NEEDS_Z_MINMAX
@@ -186,6 +193,27 @@
 #define Z_ENABLE_PIN                        PG5
 #ifndef Z_CS_PIN
   #define Z_CS_PIN                          PC6
+#endif
+
+#define I_STEP_PIN                         PG4   // MOTOR 3
+#define I_DIR_PIN                          PC1
+#define I_ENABLE_PIN                       PA0
+#ifndef I_CS_PIN
+  #define I_CS_PIN                         PC7
+#endif
+
+#define J_STEP_PIN                         PF9   // MOTOR 4
+#define J_DIR_PIN                          PF10
+#define J_ENABLE_PIN                       PG2
+#ifndef J_CS_PIN
+  #define J_CS_PIN                         PF2
+#endif
+
+#define K_STEP_PIN                         PC13  // MOTOR 5
+#define K_DIR_PIN                          PF0
+#define K_ENABLE_PIN                       PF1
+#ifndef K_CS_PIN
+  #define K_CS_PIN                         PE4
 #endif
 
 #define Z2_STEP_PIN                         PG4   // MOTOR 3
