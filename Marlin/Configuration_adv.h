@@ -868,15 +868,15 @@
  * the position of the toolhead relative to the workspace.
  */
 
-//#define SENSORLESS_BACKOFF_MM  { 2, 2, 0 }  // (linear=mm, rotational=°) Backoff from endstops before sensorless homing
+#define SENSORLESS_BACKOFF_MM  { 0, 0, 0 , 0, 10, 0}  // (linear=mm, rotational=°) Backoff from endstops before sensorless homing
 
-#define HOMING_BUMP_MM      { 5, 5, 2 }       // (linear=mm, rotational=°) Backoff from endstops after first bump
-#define HOMING_BUMP_DIVISOR { 2, 2, 4 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+#define HOMING_BUMP_MM      { 10, 10, 15, 15, 0, 5 }       // (mm) Backoff from endstops after first bump
+#define HOMING_BUMP_DIVISOR {  4,  4,  4,  4,  1, 2 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 
-//#define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (linear=mm, rotational=°) Backoff from endstops after homing
+// #define HOMING_BACKOFF_POST_MM { 0, 0, 0, 0, 0, 0 }  // (linear=mm, rotational=°) Backoff from endstops after homing
 
-//#define QUICK_HOME                          // If G28 contains XY do a diagonal move first
-//#define HOME_Y_BEFORE_X                     // If G28 contains XY home Y before X
+// #define QUICK_HOME                          // If G28 contains XY do a diagonal move first
+#define HOME_Y_BEFORE_X                     // If G28 contains XY home Y before X
 //#define HOME_Z_FIRST                        // Home Z first. Requires a Z-MIN endstop (not a probe).
 //#define CODEPENDENT_XY_HOMING               // If X/Y can't home without homing Y/X first
 
@@ -1050,7 +1050,7 @@
 
 // @section motion
 
-#define AXIS_RELATIVE_MODES { false, false, false, false }
+#define AXIS_RELATIVE_MODES { false, false, false, false, false, false }
 
 // Add a Duplicate option for well-separated conjoined nozzles
 //#define MULTI_NOZZLE_DUPLICATION
@@ -1072,7 +1072,7 @@
  * Set DISABLE_INACTIVE_? 'true' to shut down axis steppers after an idle period.
  * The Deactive Time can be overridden with M18 and M84. Set to 0 for No Timeout.
  */
-#define DEFAULT_STEPPER_DEACTIVE_TIME 120
+#define DEFAULT_STEPPER_DEACTIVE_TIME 0
 #define DISABLE_INACTIVE_X true
 #define DISABLE_INACTIVE_Y true
 #define DISABLE_INACTIVE_Z true  // Set 'false' if the nozzle could fall onto your printed part!
@@ -1300,7 +1300,7 @@
 // @section lcd
 
 #if HAS_MANUAL_MOVE_MENU
-  #define MANUAL_FEEDRATE { 50*60, 50*60, 4*60, 2*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
+  #define MANUAL_FEEDRATE { 50*60, 50*60, 4*60, 2*60, 50*60, 4*60 } } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
   #define FINE_MANUAL_MOVE 0.025    // (mm) Smallest manual move (< 0.1mm) applying to Z on most machines
   #if IS_ULTIPANEL
     #define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
@@ -2408,7 +2408,7 @@
  * - During Hold all Emergency Parser commands are available, as usual.
  * - Enable NANODLP_Z_SYNC and NANODLP_ALL_AXIS for move command end-state reports.
  */
-//#define REALTIME_REPORTING_COMMANDS
+#define REALTIME_REPORTING_COMMANDS
 #if ENABLED(REALTIME_REPORTING_COMMANDS)
   //#define FULL_REPORT_TO_HOST_FEATURE   // Auto-report the machine status like Grbl CNC
 #endif
@@ -2802,7 +2802,7 @@
   #define INTERPOLATE      true
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT       800        // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT       1188        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     16        // 0..256
     #define X_RSENSE          0.11
@@ -2822,7 +2822,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT       800
+    #define Y_CURRENT       1980
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     16
     #define Y_RSENSE          0.11
@@ -2842,7 +2842,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT       800
+    #define Z_CURRENT       1188
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     16
     #define Z_RSENSE          0.11
@@ -2882,7 +2882,7 @@
   #endif
 
   #if AXIS_IS_TMC(I)
-    #define I_CURRENT      800
+    #define I_CURRENT      403
     #define I_CURRENT_HOME I_CURRENT
     #define I_MICROSTEPS    16
     #define I_RSENSE         0.11
@@ -2892,8 +2892,8 @@
   #endif
 
   #if AXIS_IS_TMC(J)
-    #define J_CURRENT      800
-    #define J_CURRENT_HOME J_CURRENT
+    #define J_CURRENT      1188
+    #define J_CURRENT_HOME 500
     #define J_MICROSTEPS    16
     #define J_RSENSE         0.11
     #define J_CHAIN_POS     -1
@@ -2902,7 +2902,7 @@
   #endif
 
   #if AXIS_IS_TMC(K)
-    #define K_CURRENT      800
+    #define K_CURRENT      565
     #define K_CURRENT_HOME K_CURRENT
     #define K_MICROSTEPS    16
     #define K_RSENSE         0.11
@@ -3236,21 +3236,21 @@
    * Comment *_STALL_SENSITIVITY to disable sensorless homing for that axis.
    * @section tmc/stallguard
    */
-  //#define SENSORLESS_HOMING // StallGuard capable drivers only
+  #define SENSORLESS_HOMING // StallGuard capable drivers only
 
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
     // TMC2209: 0...255. TMC2130: -64...63
     #define X_STALL_SENSITIVITY  8
-    #define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
+    // #define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
     #define Y_STALL_SENSITIVITY  8
-    #define Y2_STALL_SENSITIVITY Y_STALL_SENSITIVITY
-    //#define Z_STALL_SENSITIVITY  8
+    // #define Y2_STALL_SENSITIVITY Y_STALL_SENSITIVITY
+    #define Z_STALL_SENSITIVITY  8
     //#define Z2_STALL_SENSITIVITY Z_STALL_SENSITIVITY
     //#define Z3_STALL_SENSITIVITY Z_STALL_SENSITIVITY
     //#define Z4_STALL_SENSITIVITY Z_STALL_SENSITIVITY
-    //#define I_STALL_SENSITIVITY  8
-    //#define J_STALL_SENSITIVITY  8
-    //#define K_STALL_SENSITIVITY  8
+    #define I_STALL_SENSITIVITY  8
+    #define J_STALL_SENSITIVITY  8
+    #define K_STALL_SENSITIVITY  8
     //#define U_STALL_SENSITIVITY  8
     //#define V_STALL_SENSITIVITY  8
     //#define W_STALL_SENSITIVITY  8
@@ -3282,7 +3282,7 @@
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continuous reporting.
    */
-  //#define TMC_DEBUG
+  #define TMC_DEBUG
 
   /**
    * You can set your own advanced settings by filling in predefined functions.
@@ -3667,7 +3667,7 @@
  * Enables G53 and G54-G59.3 commands to select coordinate systems
  * and G92.1 to reset the workspace to native machine space.
  */
-//#define CNC_COORDINATE_SYSTEMS
+#define CNC_COORDINATE_SYSTEMS
 
 // @section reporting
 
@@ -3761,7 +3761,7 @@
 //#define MEATPACK_ON_SERIAL_PORT_1
 //#define MEATPACK_ON_SERIAL_PORT_2
 
-//#define GCODE_CASE_INSENSITIVE  // Accept G-code sent to the firmware in lowercase
+#define GCODE_CASE_INSENSITIVE  // Accept G-code sent to the firmware in lowercase
 
 //#define REPETIER_GCODE_M360     // Add commands originally from Repetier FW
 
@@ -3781,7 +3781,7 @@
  * High feedrates may cause ringing and harm print quality.
  */
 //#define PAREN_COMMENTS      // Support for parentheses-delimited comments
-//#define GCODE_MOTION_MODES  // Remember the motion mode (G0 G1 G2 G3 G5 G38.X) and apply for X Y Z E F, etc.
+#define GCODE_MOTION_MODES  // Remember the motion mode (G0 G1 G2 G3 G5 G38.X) and apply for X Y Z E F, etc.
 
 // Enable and set a (default) feedrate for all G0 moves
 //#define G0_FEEDRATE 3000 // (mm/min)
