@@ -1382,7 +1382,7 @@
 #define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_FEEDRATE (133*60)
+#define XY_PROBE_FEEDRATE (1000)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_FEEDRATE_FAST (4*60)
@@ -1935,7 +1935,7 @@
 // For DELTA this is the top-center of the Cartesian print volume.
 #define MANUAL_X_HOME_POS -170
 #define MANUAL_Y_HOME_POS -75
-//#define MANUAL_Z_HOME_POS 0
+#define MANUAL_Z_HOME_POS -70
 #define MANUAL_I_HOME_POS -170
 #define MANUAL_J_HOME_POS -125
 //#define MANUAL_K_HOME_POS 0
@@ -1947,10 +1947,10 @@
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
-// #define Z_SAFE_HOMING
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 0  // X point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 0.00  // X point for Z homing
   #define Z_SAFE_HOMING_Y_POINT 0.00  // Y point for Z homing
 #endif
 
