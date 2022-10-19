@@ -4,6 +4,12 @@
 #
 import pioutil
 if pioutil.is_pio_build():
+<<<<<<< HEAD
 	from datetime import datetime
 	Import("env")
 	env['PROGNAME'] = datetime.now().strftime("firmware-%Y%m%d-%H%M%S")
+=======
+    from datetime import datetime
+    Import("env")
+    env['PROGNAME'] = datetime.now().strftime("firmware-%Y%m%d-%H%M%S")
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445

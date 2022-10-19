@@ -38,7 +38,10 @@ void restore_stepper_drivers() {
 
 void reset_stepper_drivers() {
   TERN_(HAS_TMC26X, tmc26x_init_to_defaults());
+<<<<<<< HEAD
   TERN_(HAS_L64XX, L64xxManager.init_to_defaults());
+=======
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   TERN_(HAS_TRINAMIC_CONFIG, reset_trinamic_drivers());
 }
 

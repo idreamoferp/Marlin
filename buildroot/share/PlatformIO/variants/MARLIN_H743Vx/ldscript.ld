@@ -26,7 +26,11 @@
 *****************************************************************************
 ** @attention
 **
+<<<<<<< HEAD
 ** <h2><center>&copy; COPYRIGHT(c) 2019 STMicroelectronics</center></h2>
+=======
+** Copyright (c) 2019 STMicroelectronics
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 **
 ** Redistribution and use in source and binary forms, with or without modification,
 ** are permitted provided that the following conditions are met:

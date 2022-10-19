@@ -45,6 +45,7 @@
 #define REPORT_NAME_ANALOG(COUNTER, NAME) _ADD_PIN(#NAME, COUNTER)
 
 #include "pinsDebug_list.h"
+<<<<<<< HEAD
 #line 48
 
 // manually add pins that have names that are macros which don't play well with these macros
@@ -62,6 +63,25 @@
     static const char TXD_NAME_2[] PROGMEM = { "TXD2" };
   #endif
   #if CONF_SERIAL_IS(3)
+=======
+#line 49
+
+// manually add pins that have names that are macros which don't play well with these macros
+#if ANY(AVR_ATmega2560_FAMILY, AVR_ATmega1284_FAMILY, ARDUINO_ARCH_SAM, TARGET_LPC1768)
+  #if SERIAL_IN_USE(0)
+    static const char RXD_NAME_0[] PROGMEM = { "RXD0" };
+    static const char TXD_NAME_0[] PROGMEM = { "TXD0" };
+  #endif
+  #if SERIAL_IN_USE(1)
+    static const char RXD_NAME_1[] PROGMEM = { "RXD1" };
+    static const char TXD_NAME_1[] PROGMEM = { "TXD1" };
+  #endif
+  #if SERIAL_IN_USE(2)
+    static const char RXD_NAME_2[] PROGMEM = { "RXD2" };
+    static const char TXD_NAME_2[] PROGMEM = { "TXD2" };
+  #endif
+  #if SERIAL_IN_USE(3)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     static const char RXD_NAME_3[] PROGMEM = { "RXD3" };
     static const char TXD_NAME_3[] PROGMEM = { "TXD3" };
   #endif
@@ -99,7 +119,11 @@ const PinInfo pin_array[] PROGMEM = {
    *     2 bytes containing the digital/analog bool flag
    */
 
+<<<<<<< HEAD
   #if CONF_SERIAL_IS(0)
+=======
+  #if SERIAL_IN_USE(0)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     #if EITHER(AVR_ATmega2560_FAMILY, ARDUINO_ARCH_SAM)
       { RXD_NAME_0, 0, true },
       { TXD_NAME_0, 1, true },
@@ -112,7 +136,11 @@ const PinInfo pin_array[] PROGMEM = {
     #endif
   #endif
 
+<<<<<<< HEAD
   #if CONF_SERIAL_IS(1)
+=======
+  #if SERIAL_IN_USE(1)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     #if EITHER(AVR_ATmega2560_FAMILY, ARDUINO_ARCH_SAM)
       { RXD_NAME_1, 19, true },
       { TXD_NAME_1, 18, true },
@@ -130,7 +158,11 @@ const PinInfo pin_array[] PROGMEM = {
     #endif
   #endif
 
+<<<<<<< HEAD
   #if CONF_SERIAL_IS(2)
+=======
+  #if SERIAL_IN_USE(2)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     #if EITHER(AVR_ATmega2560_FAMILY, ARDUINO_ARCH_SAM)
       { RXD_NAME_2, 17, true },
       { TXD_NAME_2, 16, true },
@@ -145,7 +177,11 @@ const PinInfo pin_array[] PROGMEM = {
     #endif
   #endif
 
+<<<<<<< HEAD
   #if CONF_SERIAL_IS(3)
+=======
+  #if SERIAL_IN_USE(3)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     #if EITHER(AVR_ATmega2560_FAMILY, ARDUINO_ARCH_SAM)
       { RXD_NAME_3, 15, true },
       { TXD_NAME_3, 14, true },
@@ -164,7 +200,11 @@ const PinInfo pin_array[] PROGMEM = {
   #endif
 
   #include "pinsDebug_list.h"
+<<<<<<< HEAD
   #line 167
+=======
+  #line 168
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
 };
 

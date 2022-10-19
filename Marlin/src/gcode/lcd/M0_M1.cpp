@@ -85,7 +85,16 @@ void GcodeSuite::M0_M1() {
 
   #endif
 
+<<<<<<< HEAD
   TERN_(HOST_PROMPT_SUPPORT, hostui.prompt_do(PROMPT_USER_CONTINUE, parser.codenum ? F("M1 Stop") : F("M0 Stop"), FPSTR(CONTINUE_STR)));
+=======
+  #if ENABLED(HOST_PROMPT_SUPPORT)
+    if (parser.string_arg)
+      hostui.prompt_do(PROMPT_USER_CONTINUE, parser.string_arg, FPSTR(CONTINUE_STR));
+    else
+      hostui.prompt_do(PROMPT_USER_CONTINUE, parser.codenum ? F("M1 Stop") : F("M0 Stop"), FPSTR(CONTINUE_STR));
+  #endif
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   TERN_(HAS_RESUME_CONTINUE, wait_for_user_response(ms));
 

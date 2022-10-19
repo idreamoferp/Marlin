@@ -69,6 +69,18 @@
 #if AXIS_DRIVER_TYPE_K(TMC26X)
   _TMC26X_DEFINE(K);
 #endif
+<<<<<<< HEAD
+=======
+#if AXIS_DRIVER_TYPE_U(TMC26X)
+  _TMC26X_DEFINE(U);
+#endif
+#if AXIS_DRIVER_TYPE_V(TMC26X)
+  _TMC26X_DEFINE(V);
+#endif
+#if AXIS_DRIVER_TYPE_W(TMC26X)
+  _TMC26X_DEFINE(W);
+#endif
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #if AXIS_DRIVER_TYPE_E0(TMC26X)
   _TMC26X_DEFINE(E0);
 #endif
@@ -133,6 +145,18 @@ void tmc26x_init_to_defaults() {
   #if AXIS_DRIVER_TYPE_K(TMC26X)
     _TMC26X_INIT(K);
   #endif
+<<<<<<< HEAD
+=======
+  #if AXIS_DRIVER_TYPE_U(TMC26X)
+    _TMC26X_INIT(U);
+  #endif
+  #if AXIS_DRIVER_TYPE_V(TMC26X)
+    _TMC26X_INIT(V);
+  #endif
+  #if AXIS_DRIVER_TYPE_W(TMC26X)
+    _TMC26X_INIT(W);
+  #endif
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   #if AXIS_DRIVER_TYPE_E0(TMC26X)
     _TMC26X_INIT(E0);
   #endif

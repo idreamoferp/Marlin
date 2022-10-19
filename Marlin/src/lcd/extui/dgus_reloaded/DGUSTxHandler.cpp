@@ -421,16 +421,28 @@ void DGUSTxHandler::PIDKp(DGUS_VP &vp) {
     default: return;
     #if ENABLED(PIDTEMPBED)
       case DGUS_Data::Heater::BED:
+<<<<<<< HEAD
         value = ExtUI::getBedPIDValues_Kp();
+=======
+        value = ExtUI::getBedPID_Kp();
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
         break;
     #endif
     #if ENABLED(PIDTEMP)
       case DGUS_Data::Heater::H0:
+<<<<<<< HEAD
         value = ExtUI::getPIDValues_Kp(ExtUI::E0);
         break;
       #if HAS_MULTI_HOTEND
         case DGUS_Data::Heater::H1:
           value = ExtUI::getPIDValues_Kp(ExtUI::E1);
+=======
+        value = ExtUI::getPID_Kp(ExtUI::E0);
+        break;
+      #if HAS_MULTI_HOTEND
+        case DGUS_Data::Heater::H1:
+          value = ExtUI::getPID_Kp(ExtUI::E1);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
           break;
       #endif
     #endif
@@ -447,16 +459,28 @@ void DGUSTxHandler::PIDKi(DGUS_VP &vp) {
     default: return;
     #if ENABLED(PIDTEMPBED)
       case DGUS_Data::Heater::BED:
+<<<<<<< HEAD
         value = ExtUI::getBedPIDValues_Ki();
+=======
+        value = ExtUI::getBedPID_Ki();
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
         break;
     #endif
     #if ENABLED(PIDTEMP)
       case DGUS_Data::Heater::H0:
+<<<<<<< HEAD
         value = ExtUI::getPIDValues_Ki(ExtUI::E0);
         break;
       #if HAS_MULTI_HOTEND
         case DGUS_Data::Heater::H1:
           value = ExtUI::getPIDValues_Ki(ExtUI::E1);
+=======
+        value = ExtUI::getPID_Ki(ExtUI::E0);
+        break;
+      #if HAS_MULTI_HOTEND
+        case DGUS_Data::Heater::H1:
+          value = ExtUI::getPID_Ki(ExtUI::E1);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
           break;
       #endif
     #endif
@@ -473,16 +497,28 @@ void DGUSTxHandler::PIDKd(DGUS_VP &vp) {
     default: return;
     #if ENABLED(PIDTEMPBED)
       case DGUS_Data::Heater::BED:
+<<<<<<< HEAD
         value = ExtUI::getBedPIDValues_Kd();
+=======
+        value = ExtUI::getBedPID_Kd();
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
         break;
     #endif
     #if ENABLED(PIDTEMP)
       case DGUS_Data::Heater::H0:
+<<<<<<< HEAD
         value = ExtUI::getPIDValues_Kd(ExtUI::E0);
         break;
       #if HAS_MULTI_HOTEND
         case DGUS_Data::Heater::H1:
           value = ExtUI::getPIDValues_Kd(ExtUI::E1);
+=======
+        value = ExtUI::getPID_Kd(ExtUI::E0);
+        break;
+      #if HAS_MULTI_HOTEND
+        case DGUS_Data::Heater::H1:
+          value = ExtUI::getPID_Kd(ExtUI::E1);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
           break;
       #endif
     #endif

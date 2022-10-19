@@ -24,6 +24,13 @@
 #define ALLOW_STM32DUINO
 #include "env_validate.h"
 
+<<<<<<< HEAD
+=======
+#if HOTENDS > 1 || E_STEPPERS > 1
+  #error "TH3D EZBoard only supports 1 hotend / E stepper."
+#endif
+
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #define BOARD_INFO_NAME   "TH3D EZBoard V2"
 #define BOARD_WEBSITE_URL "th3dstudio.com"
 

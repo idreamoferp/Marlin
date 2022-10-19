@@ -28,7 +28,11 @@
 #endif
 
 /**
+<<<<<<< HEAD
  * G92: Set the Current Position to the given X [Y [Z [A [B [C [E]]]]]] values.
+=======
+ * G92: Set the Current Position to the given X [Y [Z [A [B [C [U [V [W ]]]]]]]] [E] values.
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
  *
  * Behind the scenes the G92 command may modify the Current Position
  * or the Position Shift depending on settings and sub-commands.
@@ -36,6 +40,7 @@
  * Since E has no Workspace Offset, it is always set directly.
  *
  * Without Workspace Offsets (e.g., with NO_WORKSPACE_OFFSETS):
+<<<<<<< HEAD
  *   G92   : Set NATIVE Current Position to the given X [Y [Z [A [B [C [E]]]]]].
  *
  * Using Workspace Offsets (default Marlin behavior):
@@ -44,6 +49,16 @@
  *
  * With POWER_LOSS_RECOVERY:
  *   G92.9 : Set NATIVE Current Position to the given X [Y [Z [A [B [C [E]]]]]].
+=======
+ *   G92   : Set NATIVE Current Position to the given X [Y [Z [A [B [C [U [V [W ]]]]]]]] [E].
+ *
+ * Using Workspace Offsets (default Marlin behavior):
+ *   G92   : Modify Workspace Offsets so the reported position shows the given X [Y [Z [A [B [C [U [V [W ]]]]]]]] [E].
+ *   G92.1 : Zero XYZ Workspace Offsets (so the reported position = the native position).
+ *
+ * With POWER_LOSS_RECOVERY:
+ *   G92.9 : Set NATIVE Current Position to the given X [Y [Z [A [B [C [U [V [W ]]]]]]]] [E].
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
  */
 void GcodeSuite::G92() {
 

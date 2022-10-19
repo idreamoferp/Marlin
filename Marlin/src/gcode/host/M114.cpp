@@ -28,6 +28,7 @@
 
 #if ENABLED(M114_DETAIL)
 
+<<<<<<< HEAD
   #if HAS_L64XX
     #include "../../libs/L64XX/L64XX_Marlin.h"
     #define DEBUG_OUT ENABLED(L6470_CHITCHAT)
@@ -35,6 +36,9 @@
   #endif
 
   void report_all_axis_pos(const xyze_pos_t &pos, const uint8_t n=XYZE, const uint8_t precision=3) {
+=======
+  void report_all_axis_pos(const xyze_pos_t &pos, const uint8_t n=LOGICAL_AXES, const uint8_t precision=3) {
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     char str[12];
     LOOP_L_N(a, n) {
       SERIAL_ECHOPGM_P((PGM_P)pgm_read_ptr(&SP_AXIS_LBL[a]));
@@ -84,6 +88,7 @@
 
     planner.synchronize();
 
+<<<<<<< HEAD
     #if HAS_L64XX
       char temp_buf[80];
       int32_t temp;
@@ -158,6 +163,8 @@
       SERIAL_EOL();
     #endif // HAS_L64XX
 
+=======
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     SERIAL_ECHOPGM("Stepper:");
     LOOP_LOGICAL_AXES(i) {
       SERIAL_ECHOPGM_P((PGM_P)pgm_read_ptr(&SP_AXIS_LBL[i]), stepper.position((AxisEnum)i));
@@ -180,7 +187,14 @@
       cartes.x, cartes.y, cartes.z,
       planner.get_axis_position_mm(I_AXIS),
       planner.get_axis_position_mm(J_AXIS),
+<<<<<<< HEAD
       planner.get_axis_position_mm(K_AXIS)
+=======
+      planner.get_axis_position_mm(K_AXIS),
+      planner.get_axis_position_mm(U_AXIS),
+      planner.get_axis_position_mm(V_AXIS),
+      planner.get_axis_position_mm(W_AXIS)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     );
     report_all_axis_pos(from_steppers);
 

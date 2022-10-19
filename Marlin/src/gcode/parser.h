@@ -256,6 +256,7 @@ public:
 
   // Float removes 'E' to prevent scientific notation interpretation
   static float value_float() {
+<<<<<<< HEAD
     if (value_ptr) {
       char *e = value_ptr;
       for (;;) {
@@ -268,10 +269,22 @@ public:
           return ret;
         }
         ++e;
+=======
+    if (!value_ptr) return 0;
+    char *e = value_ptr;
+    for (;;) {
+      const char c = *e;
+      if (c == '\0' || c == ' ') break;
+      if (c == 'E' || c == 'e' || c == 'X' || c == 'x') {
+        *e = '\0';
+        const float ret = strtof(value_ptr, nullptr);
+        *e = c;
+        return ret;
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
       }
-      return strtof(value_ptr, nullptr);
+      ++e;
     }
-    return 0;
+    return strtof(value_ptr, nullptr);
   }
 
   // Code value as a long or ulong
@@ -309,6 +322,7 @@ public:
     }
 
     static float axis_unit_factor(const AxisEnum axis) {
+<<<<<<< HEAD
       return (
         #if HAS_EXTRUDERS
           axis >= E_AXIS && volumetric_enabled ? volumetric_unit_factor : linear_unit_factor
@@ -316,6 +330,20 @@ public:
           linear_unit_factor
         #endif
       );
+=======
+      if (false
+        || TERN0(AXIS4_ROTATES, axis == I_AXIS)
+        || TERN0(AXIS5_ROTATES, axis == J_AXIS)
+        || TERN0(AXIS6_ROTATES, axis == K_AXIS)
+        || TERN0(AXIS7_ROTATES, axis == U_AXIS)
+        || TERN0(AXIS8_ROTATES, axis == V_AXIS)
+        || TERN0(AXIS9_ROTATES, axis == W_AXIS)
+      ) return 1.0f;
+      #if HAS_EXTRUDERS
+        if (axis >= E_AXIS && volumetric_enabled) return volumetric_unit_factor;
+      #endif
+      return linear_unit_factor;
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     }
 
     static float linear_value_to_mm(const_float_t v)                  { return v * linear_unit_factor; }
@@ -340,6 +368,16 @@ public:
   #define LINEAR_UNIT(V)     parser.mm_to_linear_unit(V)
   #define VOLUMETRIC_UNIT(V) parser.mm_to_volumetric_unit(V)
 
+<<<<<<< HEAD
+=======
+  #define I_AXIS_UNIT(V) TERN(AXIS4_ROTATES, (V), LINEAR_UNIT(V))
+  #define J_AXIS_UNIT(V) TERN(AXIS5_ROTATES, (V), LINEAR_UNIT(V))
+  #define K_AXIS_UNIT(V) TERN(AXIS6_ROTATES, (V), LINEAR_UNIT(V))
+  #define U_AXIS_UNIT(V) TERN(AXIS7_ROTATES, (V), LINEAR_UNIT(V))
+  #define V_AXIS_UNIT(V) TERN(AXIS8_ROTATES, (V), LINEAR_UNIT(V))
+  #define W_AXIS_UNIT(V) TERN(AXIS9_ROTATES, (V), LINEAR_UNIT(V))
+
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   static float value_linear_units()                      { return linear_value_to_mm(value_float()); }
   static float value_axis_units(const AxisEnum axis)     { return axis_value_to_mm(axis, value_float()); }
   static float value_per_axis_units(const AxisEnum axis) { return per_axis_value(axis, value_float()); }
@@ -347,6 +385,7 @@ public:
   #if ENABLED(TEMPERATURE_UNITS_SUPPORT)
 
     static void set_input_temp_units(const TempUnit units) { input_temp_units = units; }
+<<<<<<< HEAD
 
     static char temp_units_code() {
       return input_temp_units == TEMPUNIT_K ? 'K' : input_temp_units == TEMPUNIT_F ? 'F' : 'C';
@@ -357,6 +396,18 @@ public:
 
     #if HAS_MARLINUI_MENU && DISABLED(DISABLE_M503)
 
+=======
+
+    static char temp_units_code() {
+      return input_temp_units == TEMPUNIT_K ? 'K' : input_temp_units == TEMPUNIT_F ? 'F' : 'C';
+    }
+    static FSTR_P temp_units_name() {
+      return input_temp_units == TEMPUNIT_K ? F("Kelvin") : input_temp_units == TEMPUNIT_F ? F("Fahrenheit") : F("Celsius");
+    }
+
+    #if HAS_MARLINUI_MENU && DISABLED(DISABLE_M503)
+
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
       static float to_temp_units(celsius_t c) {
         switch (input_temp_units) {
           default:

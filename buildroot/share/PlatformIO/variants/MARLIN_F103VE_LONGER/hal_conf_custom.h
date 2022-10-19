@@ -171,7 +171,11 @@ extern "C" {
 * Activated: CRC code is present inside driver
 * Deactivated: CRC code cleaned from driver
 */
+<<<<<<< HEAD
 #if !defined(USE_SPI_CRC)
+=======
+#ifndef USE_SPI_CRC
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #define USE_SPI_CRC 0
 #endif
 

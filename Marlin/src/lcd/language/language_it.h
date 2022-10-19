@@ -418,7 +418,10 @@ namespace Language_it {
   LSTR MSG_ADVANCE_K_E                    = _UxGT("K Avanzamento *");
   LSTR MSG_CONTRAST                       = _UxGT("Contrasto LCD");
   LSTR MSG_BRIGHTNESS                     = _UxGT("Luminosità LCD");
+<<<<<<< HEAD
   LSTR MSG_LCD_TIMEOUT_SEC                = _UxGT("Timeout LCD (s)");
+=======
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   LSTR MSG_SCREEN_TIMEOUT                 = _UxGT("Timeout LCD (m)");
   LSTR MSG_BRIGHTNESS_OFF                 = _UxGT("Spegni Retroillum.");
   LSTR MSG_STORE_EEPROM                   = _UxGT("Salva impostazioni");

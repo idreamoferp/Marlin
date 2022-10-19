@@ -139,7 +139,11 @@ extern "C" {
 #define PIN_SERIAL2_TX          PA2
 
 // Extra HAL modules
+<<<<<<< HEAD
 #if defined(STM32F103xE)
+=======
+#ifdef STM32F103xE
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 //#define HAL_DAC_MODULE_ENABLED (unused or maybe for the eeprom write?)
 #define HAL_SD_MODULE_ENABLED
 #define HAL_SRAM_MODULE_ENABLED

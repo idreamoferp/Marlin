@@ -99,7 +99,11 @@
   #define IS_ULTIPANEL 1
   #define STD_ENCODER_PULSES_PER_STEP 2
 
+<<<<<<< HEAD
 #elif ANY(miniVIKI, VIKI2, WYH_L12864, ELB_FULL_GRAPHIC_CONTROLLER, AZSMZ_12864)
+=======
+#elif ANY(miniVIKI, VIKI2, WYH_L12864, ELB_FULL_GRAPHIC_CONTROLLER, AZSMZ_12864, EMOTION_TECH_LCD)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   #define DOGLCD
   #define IS_DOGM_12864 1
@@ -116,6 +120,12 @@
     #define IS_U8GLIB_LM6059_AF 1
   #elif ENABLED(AZSMZ_12864)
     #define IS_U8GLIB_ST7565_64128N 1
+<<<<<<< HEAD
+=======
+  #elif ENABLED(EMOTION_TECH_LCD)
+    #define IS_U8GLIB_ST7565_64128N 1
+    #define ST7565_VOLTAGE_DIVIDER_VALUE 0x07
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   #endif
 
 #elif ENABLED(OLED_PANEL_TINYBOY2)
@@ -222,6 +232,7 @@
   #define LCD_ST7920_DELAY_1           125
   #define LCD_ST7920_DELAY_2           125
   #define LCD_ST7920_DELAY_3           125
+<<<<<<< HEAD
 
 #elif EITHER(ANET_FULL_GRAPHICS_LCD, ANET_FULL_GRAPHICS_LCD_ALT_WIRING)
 
@@ -230,6 +241,16 @@
   #define LCD_ST7920_DELAY_2           150
   #define LCD_ST7920_DELAY_3           150
 
+=======
+
+#elif EITHER(ANET_FULL_GRAPHICS_LCD, ANET_FULL_GRAPHICS_LCD_ALT_WIRING)
+
+  #define IS_RRD_FG_SC 1
+  #define LCD_ST7920_DELAY_1           150
+  #define LCD_ST7920_DELAY_2           150
+  #define LCD_ST7920_DELAY_3           150
+
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #elif ANY(REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER, BQ_LCD_SMART_CONTROLLER, K3D_FULL_GRAPHIC_SMART_CONTROLLER)
 
   #define IS_RRD_FG_SC 1
@@ -367,9 +388,21 @@
   #endif
 
 #elif EITHER(LCD_SAINSMART_I2C_1602, LCD_SAINSMART_I2C_2004)
+<<<<<<< HEAD
 
   #define LCD_I2C_TYPE_PCF8575    // I2C Character-based 12864 display
   #define LCD_I2C_ADDRESS 0x27    // I2C Address of the port expander
+
+  #if ENABLED(LCD_SAINSMART_I2C_2004)
+    #define LCD_WIDTH 20
+    #define LCD_HEIGHT 4
+  #endif
+=======
+
+  #define LCD_I2C_TYPE_PCF8575    // I2C Character-based 12864 display
+  #define LCD_I2C_ADDRESS 0x27    // I2C Address of the port expander
+  #define IS_ULTIPANEL 1
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   #if ENABLED(LCD_SAINSMART_I2C_2004)
     #define LCD_WIDTH 20
@@ -523,10 +556,13 @@
 
 #if ANY(HAS_MARLINUI_MENU, EXTENSIBLE_UI, HAS_DWIN_E3V2)
   #define HAS_MANUAL_MOVE_MENU 1
+<<<<<<< HEAD
 #endif
 
 #if ANY(HAS_MARLINUI_U8GLIB, EXTENSIBLE_UI, HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL, IS_DWIN_MARLINUI, DWIN_CREALITY_LCD_JYERSUI)
   #define CAN_SHOW_REMAINING_TIME 1
+=======
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #endif
 
 #if HAS_MARLINUI_U8GLIB
@@ -665,6 +701,7 @@
   #define E_MANUAL EXTRUDERS
 #endif
 
+<<<<<<< HEAD
 /**
  * Number of Linear Axes (e.g., XYZIJK)
  * All the logical axes except for the tool (E) axis
@@ -675,6 +712,49 @@
 #endif
 
 #ifdef K_DRIVER_TYPE
+=======
+#if E_STEPPERS <= 7
+  #undef INVERT_E7_DIR
+  #if E_STEPPERS <= 6
+    #undef INVERT_E6_DIR
+    #if E_STEPPERS <= 5
+      #undef INVERT_E5_DIR
+      #if E_STEPPERS <= 4
+        #undef INVERT_E4_DIR
+        #if E_STEPPERS <= 3
+          #undef INVERT_E3_DIR
+          #if E_STEPPERS <= 2
+            #undef INVERT_E2_DIR
+            #if E_STEPPERS <= 1
+              #undef INVERT_E1_DIR
+              #if E_STEPPERS == 0
+                #undef INVERT_E0_DIR
+              #endif
+            #endif
+          #endif
+        #endif
+      #endif
+    #endif
+  #endif
+#endif
+
+/**
+ * Number of Linear Axes (e.g., XYZIJKUVW)
+ * All the logical axes except for the tool (E) axis
+ */
+#ifdef NUM_AXES
+  #undef NUM_AXES
+  #define NUM_AXES_WARNING 1
+#endif
+
+#ifdef W_DRIVER_TYPE
+  #define NUM_AXES 9
+#elif defined(V_DRIVER_TYPE)
+  #define NUM_AXES 8
+#elif defined(U_DRIVER_TYPE)
+  #define NUM_AXES 7
+#elif defined(K_DRIVER_TYPE)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   #define NUM_AXES 6
 #elif defined(J_DRIVER_TYPE)
   #define NUM_AXES 5
@@ -706,6 +786,18 @@
         #define HAS_J_AXIS 1
         #if NUM_AXES >= 6
           #define HAS_K_AXIS 1
+<<<<<<< HEAD
+=======
+          #if NUM_AXES >= 7
+            #define HAS_U_AXIS 1
+            #if NUM_AXES >= 8
+              #define HAS_V_AXIS 1
+              #if NUM_AXES >= 9
+                #define HAS_W_AXIS 1
+              #endif
+            #endif
+          #endif
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
         #endif
       #endif
     #endif
@@ -750,6 +842,12 @@
   #undef Y_MIN_POS
   #undef Y_MAX_POS
   #undef MANUAL_Y_HOME_POS
+<<<<<<< HEAD
+=======
+  #undef MIN_SOFTWARE_ENDSTOP_Y
+  #undef MAX_SOFTWARE_ENDSTOP_Y
+  #undef SAFE_BED_LEVELING_START_Y
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #endif
 
 #if !HAS_Z_AXIS
@@ -767,6 +865,12 @@
   #undef Z_MIN_POS
   #undef Z_MAX_POS
   #undef MANUAL_Z_HOME_POS
+<<<<<<< HEAD
+=======
+  #undef MIN_SOFTWARE_ENDSTOP_Z
+  #undef MAX_SOFTWARE_ENDSTOP_Z
+  #undef SAFE_BED_LEVELING_START_Z
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #endif
 
 #if !HAS_I_AXIS
@@ -781,6 +885,12 @@
   #undef I_MIN_POS
   #undef I_MAX_POS
   #undef MANUAL_I_HOME_POS
+<<<<<<< HEAD
+=======
+  #undef MIN_SOFTWARE_ENDSTOP_I
+  #undef MAX_SOFTWARE_ENDSTOP_I
+  #undef SAFE_BED_LEVELING_START_I
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #endif
 
 #if !HAS_J_AXIS
@@ -795,6 +905,12 @@
   #undef J_MIN_POS
   #undef J_MAX_POS
   #undef MANUAL_J_HOME_POS
+<<<<<<< HEAD
+=======
+  #undef MIN_SOFTWARE_ENDSTOP_J
+  #undef MAX_SOFTWARE_ENDSTOP_J
+  #undef SAFE_BED_LEVELING_START_J
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #endif
 
 #if !HAS_K_AXIS
@@ -809,6 +925,63 @@
   #undef K_MIN_POS
   #undef K_MAX_POS
   #undef MANUAL_K_HOME_POS
+<<<<<<< HEAD
+=======
+  #undef MIN_SOFTWARE_ENDSTOP_K
+  #undef MAX_SOFTWARE_ENDSTOP_K
+  #undef SAFE_BED_LEVELING_START_K
+#endif
+
+#if !HAS_U_AXIS
+  #undef ENDSTOPPULLUP_UMIN
+  #undef ENDSTOPPULLUP_UMAX
+  #undef U_MIN_ENDSTOP_INVERTING
+  #undef U_MAX_ENDSTOP_INVERTING
+  #undef U_ENABLE_ON
+  #undef DISABLE_U
+  #undef INVERT_U_DIR
+  #undef U_HOME_DIR
+  #undef U_MIN_POS
+  #undef U_MAX_POS
+  #undef MANUAL_U_HOME_POS
+  #undef MIN_SOFTWARE_ENDSTOP_U
+  #undef MAX_SOFTWARE_ENDSTOP_U
+  #undef SAFE_BED_LEVELING_START_U
+#endif
+
+#if !HAS_V_AXIS
+  #undef ENDSTOPPULLUP_VMIN
+  #undef ENDSTOPPULLUP_VMAX
+  #undef V_MIN_ENDSTOP_INVERTING
+  #undef V_MAX_ENDSTOP_INVERTING
+  #undef V_ENABLE_ON
+  #undef DISABLE_V
+  #undef INVERT_V_DIR
+  #undef V_HOME_DIR
+  #undef V_MIN_POS
+  #undef V_MAX_POS
+  #undef MANUAL_V_HOME_POS
+  #undef MIN_SOFTWARE_ENDSTOP_V
+  #undef MAX_SOFTWARE_ENDSTOP_V
+  #undef SAFE_BED_LEVELING_START_V
+#endif
+
+#if !HAS_W_AXIS
+  #undef ENDSTOPPULLUP_WMIN
+  #undef ENDSTOPPULLUP_WMAX
+  #undef W_MIN_ENDSTOP_INVERTING
+  #undef W_MAX_ENDSTOP_INVERTING
+  #undef W_ENABLE_ON
+  #undef DISABLE_W
+  #undef INVERT_W_DIR
+  #undef W_HOME_DIR
+  #undef W_MIN_POS
+  #undef W_MAX_POS
+  #undef MANUAL_W_HOME_POS
+  #undef MIN_SOFTWARE_ENDSTOP_W
+  #undef MAX_SOFTWARE_ENDSTOP_W
+  #undef SAFE_BED_LEVELING_START_W
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #endif
 
 #ifdef X2_DRIVER_TYPE
@@ -831,14 +1004,51 @@
 #endif
 
 /**
+<<<<<<< HEAD
  * Number of Secondary Axes (e.g., IJK)
+=======
+ * Number of Secondary Axes (e.g., IJKUVW)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
  * All linear/rotational axes between XYZ and E.
  */
 #define SECONDARY_AXES SUB3(NUM_AXES)
 
 /**
+<<<<<<< HEAD
  * Number of Logical Axes (e.g., XYZIJKE)
  * All the logical axes that can be commanded directly by G-code.
+=======
+ * Number of Rotational Axes (e.g., IJK)
+ * All axes for which AXIS*_ROTATES is defined.
+ * For these axes, positions are specified in angular degrees.
+ */
+#if ENABLED(AXIS9_ROTATES)
+  #define ROTATIONAL_AXES 6
+#elif ENABLED(AXIS8_ROTATES)
+  #define ROTATIONAL_AXES 5
+#elif ENABLED(AXIS7_ROTATES)
+  #define ROTATIONAL_AXES 4
+#elif ENABLED(AXIS6_ROTATES)
+  #define ROTATIONAL_AXES 3
+#elif ENABLED(AXIS5_ROTATES)
+  #define ROTATIONAL_AXES 2
+#elif ENABLED(AXIS4_ROTATES)
+  #define ROTATIONAL_AXES 1
+#else
+  #define ROTATIONAL_AXES 0
+#endif
+
+/**
+ * Number of Secondary Linear Axes (e.g., UVW)
+ * All secondary axes for which AXIS*_ROTATES is not defined.
+ * Excluding primary axes and excluding duplicate axes (X2, Y2, Z2, Z3, Z4)
+ */
+#define SECONDARY_LINEAR_AXES (NUM_AXES - PRIMARY_LINEAR_AXES - ROTATIONAL_AXES)
+
+/**
+ * Number of Logical Axes (e.g., XYZIJKUVWE)
+ * All logical axes that can be commanded directly by G-code.
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
  * Delta maps stepper-specific values to ABC steppers.
  */
 #if HAS_EXTRUDERS
@@ -856,7 +1066,11 @@
  *  with shared motion and temperature settings.
  *
  * DISTINCT_E is the number of distinguished extruders. By default this
+<<<<<<< HEAD
  *  well be 1 which indicates all extruders share the same settings.
+=======
+ *  will be 1 which indicates all extruders share the same settings.
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
  *
  * E_INDEX_N(E) should be used to get the E index of any item that might be
  *  distinguished.
@@ -963,7 +1177,14 @@
 /**
  * Set flags for any form of bed probe
  */
+<<<<<<< HEAD
 #if ANY(HAS_Z_SERVO_PROBE, FIX_MOUNTED_PROBE, NOZZLE_AS_PROBE, TOUCH_MI_PROBE, Z_PROBE_ALLEN_KEY, Z_PROBE_SLED, SOLENOID_PROBE, SENSORLESS_PROBING, RACK_AND_PINION_PROBE, MAGLEV4)
+=======
+#if ANY(TOUCH_MI_PROBE, Z_PROBE_ALLEN_KEY, SOLENOID_PROBE, Z_PROBE_SLED, RACK_AND_PINION_PROBE, SENSORLESS_PROBING, MAGLEV4, MAG_MOUNTED_PROBE)
+  #define HAS_STOWABLE_PROBE 1
+#endif
+#if ANY(HAS_STOWABLE_PROBE, HAS_Z_SERVO_PROBE, FIX_MOUNTED_PROBE, BD_SENSOR, NOZZLE_AS_PROBE)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   #define HAS_BED_PROBE 1
 #endif
 
@@ -1067,6 +1288,7 @@
 #elif X_HOME_DIR < 0
   #define X_HOME_TO_MIN 1
 #endif
+<<<<<<< HEAD
 #if Y_HOME_DIR > 0
   #define Y_HOME_TO_MAX 1
 #elif Y_HOME_DIR < 0
@@ -1091,6 +1313,63 @@
   #define K_HOME_TO_MAX 1
 #elif K_HOME_DIR < 0
   #define K_HOME_TO_MIN 1
+=======
+#if HAS_Y_AXIS
+  #if Y_HOME_DIR > 0
+    #define Y_HOME_TO_MAX 1
+  #elif Y_HOME_DIR < 0
+    #define Y_HOME_TO_MIN 1
+  #endif
+#endif
+#if HAS_Z_AXIS
+  #if Z_HOME_DIR > 0
+    #define Z_HOME_TO_MAX 1
+  #elif Z_HOME_DIR < 0
+    #define Z_HOME_TO_MIN 1
+  #endif
+#endif
+#if HAS_I_AXIS
+  #if I_HOME_DIR > 0
+    #define I_HOME_TO_MAX 1
+  #elif I_HOME_DIR < 0
+    #define I_HOME_TO_MIN 1
+  #endif
+#endif
+#if HAS_J_AXIS
+  #if J_HOME_DIR > 0
+    #define J_HOME_TO_MAX 1
+  #elif J_HOME_DIR < 0
+    #define J_HOME_TO_MIN 1
+  #endif
+#endif
+#if HAS_K_AXIS
+  #if K_HOME_DIR > 0
+    #define K_HOME_TO_MAX 1
+  #elif K_HOME_DIR < 0
+    #define K_HOME_TO_MIN 1
+  #endif
+#endif
+#if HAS_U_AXIS
+  #if U_HOME_DIR > 0
+    #define U_HOME_TO_MAX 1
+  #elif U_HOME_DIR < 0
+    #define U_HOME_TO_MIN 1
+  #endif
+#endif
+#if HAS_V_AXIS
+  #if V_HOME_DIR > 0
+    #define V_HOME_TO_MAX 1
+  #elif V_HOME_DIR < 0
+    #define V_HOME_TO_MIN 1
+  #endif
+#endif
+#if HAS_W_AXIS
+  #if W_HOME_DIR > 0
+    #define W_HOME_TO_MAX 1
+  #elif W_HOME_DIR < 0
+    #define W_HOME_TO_MIN 1
+  #endif
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #endif
 
 /**
@@ -1102,17 +1381,24 @@
   #endif
   #if BOTH(DELTA, SENSORLESS_PROBING)
     #define HAS_DELTA_SENSORLESS_PROBING 1
+<<<<<<< HEAD
   #endif
   #if NONE(Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN, HAS_DELTA_SENSORLESS_PROBING)
     #define USES_Z_MIN_PROBE_PIN 1
   #endif
+=======
+  #endif
+  #if NONE(Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN, HAS_DELTA_SENSORLESS_PROBING)
+    #define USES_Z_MIN_PROBE_PIN 1
+  #endif
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   #if Z_HOME_TO_MIN && (DISABLED(USES_Z_MIN_PROBE_PIN) || ENABLED(USE_PROBE_FOR_Z_HOMING))
     #define HOMING_Z_WITH_PROBE 1
   #endif
   #ifndef Z_PROBE_LOW_POINT
     #define Z_PROBE_LOW_POINT -5
   #endif
-  #if ENABLED(Z_PROBE_ALLEN_KEY)
+  #if EITHER(Z_PROBE_ALLEN_KEY, MAG_MOUNTED_PROBE)
     #define PROBE_TRIGGERED_WHEN_STOWED_TEST 1 // Extra test for Allen Key Probe
   #endif
   #if MULTIPLE_PROBING > 1
@@ -1292,6 +1578,10 @@
   #define EXTRUDE_MINTEMP 170
 #endif
 
+#if ANY(PID_DEBUG, PID_BED_DEBUG, PID_CHAMBER_DEBUG)
+  #define HAS_PID_DEBUG 1
+#endif
+
 /**
  * TFT Displays
  *
@@ -1340,7 +1630,7 @@
   #endif
 #elif ENABLED(TFT_GENERIC)
   #define TFT_DEFAULT_ORIENTATION (TFT_EXCHANGE_XY | TFT_INVERT_X | TFT_INVERT_Y)
-  #if NONE(TFT_RES_320x240, TFT_RES_480x272, TFT_RES_480x320)
+  #if NONE(TFT_RES_320x240, TFT_RES_480x272, TFT_RES_480x320, TFT_RES_1024x600)
     #define TFT_RES_320x240
   #endif
   #if NONE(TFT_INTERFACE_FSMC, TFT_INTERFACE_SPI)
@@ -1418,6 +1708,8 @@
   #elif TFT_HEIGHT == 600
     #if ENABLED(TFT_INTERFACE_LTDC)
       #define TFT_1024x600_LTDC
+    #else
+      #define TFT_1024x600_SIM  // "Simulation" - for testing purposes only
     #endif
   #endif
 #endif
@@ -1428,7 +1720,7 @@
   #define HAS_UI_480x320 1
 #elif EITHER(TFT_480x272, TFT_480x272_SPI)
   #define HAS_UI_480x272 1
-#elif defined(TFT_1024x600_LTDC)
+#elif EITHER(TFT_1024x600_LTDC, TFT_1024x600_SIM)
   #define HAS_UI_1024x600 1
 #endif
 #if ANY(HAS_UI_320x240, HAS_UI_480x320, HAS_UI_480x272)
@@ -1439,7 +1731,11 @@
 
 // This emulated DOGM has 'touch/xpt2046', not 'tft/xpt2046'
 #if ENABLED(TOUCH_SCREEN)
+<<<<<<< HEAD
   #if TOUCH_IDLE_SLEEP
+=======
+  #if TOUCH_IDLE_SLEEP_MINS
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     #define HAS_TOUCH_SLEEP 1
   #endif
   #if NONE(TFT_TOUCH_DEVICE_GT911, TFT_TOUCH_DEVICE_XPT2046)

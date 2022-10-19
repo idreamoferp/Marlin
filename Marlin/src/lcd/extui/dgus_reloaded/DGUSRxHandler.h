@@ -107,7 +107,11 @@ namespace DGUSRxHandler {
         break;
       }
       case 2: {
+<<<<<<< HEAD
         const uint16_t data = Swap16(*(uint16_t*)data_ptr);
+=======
+        const uint16_t data = BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
         *(T*)vp.extra = (T)data;
         break;
       }

@@ -144,7 +144,11 @@ class DWIN_ICO_File():
             # process each file:
             try:
                 index = int(dirEntry.name[0:3])
+<<<<<<< HEAD
                 if (index < 0) or (index > 255):
+=======
+                if not (0 <= index <= 255):
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
                     print('...Ignoring invalid index on', dirEntry.path)
                     continue
                 #dirEntry.path is iconDir/name

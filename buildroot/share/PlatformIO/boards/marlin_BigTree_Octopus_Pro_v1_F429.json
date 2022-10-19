@@ -18,7 +18,11 @@
     "onboard_tools": [
       "stlink"
     ],
+<<<<<<< HEAD
     "openocd_board": "stm32f429disc1",
+=======
+    "openocd_board": "stm32f429",
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     "openocd_target": "stm32f4x",
     "svd_path": "STM32F429x.svd"
   },
@@ -35,7 +39,10 @@
     "disable_flushing": false,
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
+<<<<<<< HEAD
     "offset_address": "0x8008000",
+=======
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     "protocol": "stlink",
     "protocols": [
       "stlink",

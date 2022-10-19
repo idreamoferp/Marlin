@@ -75,8 +75,13 @@ struct vector_3 {
   vector_3 operator-(const vector_3 &v) { return vector_3(x - v.x, y - v.y, z - v.z); }
   vector_3 operator*(const float &v)    { return vector_3(x * v, y * v, z * v); }
 
+<<<<<<< HEAD
   operator xy_float_t() { return xy_float_t({ x, y }); }
   operator xyz_float_t() { return xyz_float_t({ x, y, z }); }
+=======
+  operator xy_float_t() { return xy_float_t({ x OPTARG(HAS_Y_AXIS, y) }); }
+  operator xyz_float_t() { return xyz_float_t({ x OPTARG(HAS_Y_AXIS, y) OPTARG(HAS_Z_AXIS, z) }); }
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   void debug(FSTR_P const title);
 };

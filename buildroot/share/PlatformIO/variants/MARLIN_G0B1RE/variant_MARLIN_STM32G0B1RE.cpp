@@ -11,7 +11,11 @@
  *******************************************************************************
  */
 
+<<<<<<< HEAD
 #if defined(STM32G0B1xx)
+=======
+#ifdef STM32G0B1xx
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #include "pins_arduino.h"
 
 // Digital PinName array

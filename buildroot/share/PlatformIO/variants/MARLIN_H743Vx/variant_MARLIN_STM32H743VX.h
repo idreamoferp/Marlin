@@ -226,6 +226,7 @@
 #endif
 
 // Extra HAL modules
+<<<<<<< HEAD
 #if !defined(HAL_DAC_MODULE_DISABLED)
   #define HAL_DAC_MODULE_ENABLED
 #endif
@@ -236,6 +237,18 @@
   #define HAL_QSPI_MODULE_ENABLED
 #endif
 #if !defined(HAL_SD_MODULE_DISABLED)
+=======
+#ifndef HAL_DAC_MODULE_DISABLED
+  #define HAL_DAC_MODULE_ENABLED
+#endif
+#ifndef HAL_ETH_MODULE_DISABLED
+  #define HAL_ETH_MODULE_ENABLED
+#endif
+#ifndef HAL_QSPI_MODULE_DISABLED
+  #define HAL_QSPI_MODULE_ENABLED
+#endif
+#ifndef HAL_SD_MODULE_DISABLED
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   #define HAL_SD_MODULE_ENABLED
 #endif
 

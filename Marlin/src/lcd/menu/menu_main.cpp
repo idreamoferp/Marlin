@@ -222,6 +222,16 @@ void menu_configuration();
 
 #endif // CUSTOM_MENU_MAIN
 
+#if ENABLED(ADVANCED_PAUSE_FEATURE)
+  // This menu item is last with an encoder. Otherwise, somewhere in the middle.
+  #if E_STEPPERS == 1 && DISABLED(FILAMENT_LOAD_UNLOAD_GCODES)
+    #define FILAMENT_CHANGE_ITEM() YESNO_ITEM(MSG_FILAMENTCHANGE, menu_change_filament, nullptr, \
+                                    GET_TEXT_F(MSG_FILAMENTCHANGE), (const char *)nullptr, F("?"))
+  #else
+    #define FILAMENT_CHANGE_ITEM() SUBMENU(MSG_FILAMENTCHANGE, menu_change_filament)
+  #endif
+#endif
+
 void menu_main() {
   const bool busy = printingIsActive()
     #if ENABLED(SDSUPPORT)
@@ -317,6 +327,10 @@ void menu_main() {
     SUBMENU(MSG_MOTION, menu_motion);
   }
 
+  #if BOTH(ADVANCED_PAUSE_FEATURE, DISABLE_ENCODER)
+    FILAMENT_CHANGE_ITEM();
+  #endif
+
   #if HAS_CUTTER
     SUBMENU(MSG_CUTTER(MENU), STICKY_SCREEN(menu_spindle_laser));
   #endif
@@ -349,6 +363,7 @@ void menu_main() {
     }
   #endif
 
+<<<<<<< HEAD
   #if ENABLED(ADVANCED_PAUSE_FEATURE)
     #if E_STEPPERS == 1 && DISABLED(FILAMENT_LOAD_UNLOAD_GCODES)
       YESNO_ITEM(MSG_FILAMENTCHANGE,
@@ -360,6 +375,8 @@ void menu_main() {
     #endif
   #endif
 
+=======
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   #if ENABLED(LCD_INFO_MENU)
     SUBMENU(MSG_INFO_MENU, menu_info);
   #endif
@@ -458,6 +475,13 @@ void menu_main() {
     });
   #endif
 
+<<<<<<< HEAD
+=======
+  #if ENABLED(ADVANCED_PAUSE_FEATURE) && DISABLED(DISABLE_ENCODER)
+    FILAMENT_CHANGE_ITEM();
+  #endif
+
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   END_MENU();
 }
 

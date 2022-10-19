@@ -45,6 +45,15 @@ enum EndstopEnum : char {
   _ES_ITEM(HAS_J_MAX, J_MAX)
   _ES_ITEM(HAS_K_MIN, K_MIN)
   _ES_ITEM(HAS_K_MAX, K_MAX)
+<<<<<<< HEAD
+=======
+  _ES_ITEM(HAS_U_MIN, U_MIN)
+  _ES_ITEM(HAS_U_MAX, U_MAX)
+  _ES_ITEM(HAS_V_MIN, V_MIN)
+  _ES_ITEM(HAS_V_MAX, V_MAX)
+  _ES_ITEM(HAS_W_MIN, W_MIN)
+  _ES_ITEM(HAS_W_MAX, W_MAX)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   // Extra Endstops for XYZ
   #if ENABLED(X_DUAL_ENDSTOPS)
@@ -159,6 +168,11 @@ class Endstops {
      * Called from ISR contexts.
      */
     static void update();
+
+    #if ENABLED(BD_SENSOR)
+      static bool bdp_state;
+      static void bdp_state_update(const bool z_state) { bdp_state = z_state; }
+    #endif
 
     /**
      * Get Endstop hit state.

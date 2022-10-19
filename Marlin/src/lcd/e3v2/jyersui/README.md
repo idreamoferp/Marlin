@@ -1,6 +1,10 @@
 # DWIN for Creality Ender 3 v2
 
+<<<<<<< HEAD
 Marlin's Ender 3 v2 support requires the `DWIN_SET` included with the Ender 3 V2 [example configuration](https://github.com/MarlinFirmware/Configurations/tree/bugfix-2.0.x/config/examples/Creality/Ender-3%20V2).
+=======
+Marlin's Ender 3 v2 support requires the `DWIN_SET` included with the Ender 3 V2 [example configuration](https://github.com/MarlinFirmware/Configurations/tree/bugfix-2.1.x/config/examples/Creality/Ender-3%20V2).
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
 ## Easy Install
 

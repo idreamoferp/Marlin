@@ -215,7 +215,11 @@ void DGUSRxHandler::PrintResume(DGUS_VP &vp, void *data_ptr) {
 void DGUSRxHandler::Feedrate(DGUS_VP &vp, void *data_ptr) {
   UNUSED(vp);
 
+<<<<<<< HEAD
   const int16_t feedrate = Swap16(*(int16_t*)data_ptr);
+=======
+  const int16_t feedrate = BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   ExtUI::setFeedrate_percent(feedrate);
 
@@ -223,7 +227,11 @@ void DGUSRxHandler::Feedrate(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::Flowrate(DGUS_VP &vp, void *data_ptr) {
+<<<<<<< HEAD
   const int16_t flowrate = Swap16(*(int16_t*)data_ptr);
+=======
+  const int16_t flowrate = BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   switch (vp.addr) {
     default: return;
@@ -246,7 +254,11 @@ void DGUSRxHandler::Flowrate(DGUS_VP &vp, void *data_ptr) {
 void DGUSRxHandler::BabystepSet(DGUS_VP &vp, void *data_ptr) {
   UNUSED(vp);
 
+<<<<<<< HEAD
   const int16_t data = Swap16(*(int16_t*)data_ptr);
+=======
+  const int16_t data = BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   const float offset = dgus_display.FromFixedPoint<int16_t, float, 2>(data);
 
   const int16_t steps = ExtUI::mmToWholeSteps(offset - ExtUI::getZOffset_mm(), ExtUI::Z);
@@ -315,7 +327,11 @@ void DGUSRxHandler::TempPreset(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::TempTarget(DGUS_VP &vp, void *data_ptr) {
+<<<<<<< HEAD
   const int16_t temp = Swap16(*(int16_t*)data_ptr);
+=======
+  const int16_t temp = BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   switch (vp.addr) {
     default: return;
@@ -338,7 +354,11 @@ void DGUSRxHandler::TempTarget(DGUS_VP &vp, void *data_ptr) {
 void DGUSRxHandler::TempCool(DGUS_VP &vp, void *data_ptr) {
   UNUSED(vp);
 
+<<<<<<< HEAD
   const DGUS_Data::Heater heater = (DGUS_Data::Heater)Swap16(*(uint16_t*)data_ptr);
+=======
+  const DGUS_Data::Heater heater = (DGUS_Data::Heater)BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   switch (heater) {
     default: return;
@@ -397,7 +417,11 @@ void DGUSRxHandler::ZOffset(DGUS_VP &vp, void *data_ptr) {
     return;
   }
 
+<<<<<<< HEAD
   const int16_t data = Swap16(*(int16_t*)data_ptr);
+=======
+  const int16_t data = BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   const float offset = dgus_display.FromFixedPoint<int16_t, float, 2>(data);
 
   const int16_t steps = ExtUI::mmToWholeSteps(offset - ExtUI::getZOffset_mm(), ExtUI::Z);
@@ -546,7 +570,11 @@ void DGUSRxHandler::DisableABL(DGUS_VP &vp, void *data_ptr) {
 void DGUSRxHandler::FilamentSelect(DGUS_VP &vp, void *data_ptr) {
   UNUSED(vp);
 
+<<<<<<< HEAD
   const DGUS_Data::Extruder extruder = (DGUS_Data::Extruder)Swap16(*(uint16_t*)data_ptr);
+=======
+  const DGUS_Data::Extruder extruder = (DGUS_Data::Extruder)BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   switch (extruder) {
     default: return;
@@ -563,7 +591,11 @@ void DGUSRxHandler::FilamentSelect(DGUS_VP &vp, void *data_ptr) {
 void DGUSRxHandler::FilamentLength(DGUS_VP &vp, void *data_ptr) {
   UNUSED(vp);
 
+<<<<<<< HEAD
   const uint16_t length = Swap16(*(uint16_t*)data_ptr);
+=======
+  const uint16_t length = BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   dgus_screen_handler.filament_length = constrain(length, 0, EXTRUDE_MAXLENGTH);
 
@@ -644,7 +676,11 @@ void DGUSRxHandler::Home(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::Move(DGUS_VP &vp, void *data_ptr) {
+<<<<<<< HEAD
   const int16_t data = Swap16(*(int16_t*)data_ptr);
+=======
+  const int16_t data = BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   const float position = dgus_display.FromFixedPoint<int16_t, float, 1>(data);
   ExtUI::axis_t axis;
 
@@ -816,7 +852,11 @@ void DGUSRxHandler::SettingsExtra(DGUS_VP &vp, void *data_ptr) {
 void DGUSRxHandler::PIDSelect(DGUS_VP &vp, void *data_ptr) {
   UNUSED(vp);
 
+<<<<<<< HEAD
   const DGUS_Data::Heater heater = (DGUS_Data::Heater)Swap16(*(uint16_t*)data_ptr);
+=======
+  const DGUS_Data::Heater heater = (DGUS_Data::Heater)BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   switch (heater) {
     default: return;
@@ -846,7 +886,11 @@ void DGUSRxHandler::PIDSetTemp(DGUS_VP &vp, void *data_ptr) {
     return;
   }
 
+<<<<<<< HEAD
   uint16_t temp = Swap16(*(uint16_t*)data_ptr);
+=======
+  uint16_t temp = BE16_P(data_ptr);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   switch (dgus_screen_handler.pid_heater) {
     default: return;

@@ -66,6 +66,18 @@ void menu_backlash() {
   #if HAS_K_AXIS && _CAN_CALI(K)
     EDIT_BACKLASH_DISTANCE(K);
   #endif
+<<<<<<< HEAD
+=======
+  #if HAS_U_AXIS && _CAN_CALI(U)
+    EDIT_BACKLASH_DISTANCE(U);
+  #endif
+  #if HAS_V_AXIS && _CAN_CALI(V)
+    EDIT_BACKLASH_DISTANCE(V);
+  #endif
+  #if HAS_W_AXIS && _CAN_CALI(W)
+    EDIT_BACKLASH_DISTANCE(W);
+  #endif
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   #ifdef BACKLASH_SMOOTHING_MM
     editable.decimal = backlash.get_smoothing_mm();

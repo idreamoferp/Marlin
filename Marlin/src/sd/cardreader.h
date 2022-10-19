@@ -89,6 +89,8 @@ typedef struct {
     ;
 } card_flags_t;
 
+enum ListingFlags : uint8_t { LS_LONG_FILENAME, LS_ONLY_BIN, LS_TIMESTAMP };
+
 #if ENABLED(AUTO_REPORT_SD_STATUS)
   #include "../libs/autoreport.h"
 #endif
@@ -207,6 +209,7 @@ public:
     FORCE_INLINE static void getfilename_sorted(const uint16_t nr) { selectFileByIndex(nr); }
   #endif
 
+<<<<<<< HEAD
   static void ls(
     TERN_(CUSTOM_FIRMWARE_UPLOAD, const bool onlyBin=false)
     #if BOTH(CUSTOM_FIRMWARE_UPLOAD, LONG_FILENAME_HOST_SUPPORT)
@@ -214,6 +217,9 @@ public:
     #endif
     TERN_(LONG_FILENAME_HOST_SUPPORT, const bool includeLongNames=false)
   );
+=======
+  static void ls(const uint8_t lsflags);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   #if ENABLED(POWER_LOSS_RECOVERY)
     static bool jobRecoverFileExists();
@@ -348,10 +354,14 @@ private:
   static int countItems(SdFile dir);
   static void selectByIndex(SdFile dir, const uint8_t index);
   static void selectByName(SdFile dir, const char * const match);
+<<<<<<< HEAD
   static void printListing(
     SdFile parent, const char * const prepend
     OPTARG(CUSTOM_FIRMWARE_UPLOAD, const bool onlyBin=false)
     OPTARG(LONG_FILENAME_HOST_SUPPORT, const bool includeLongNames=false)
+=======
+  static void printListing(SdFile parent, const char * const prepend, const uint8_t lsflags
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     OPTARG(LONG_FILENAME_HOST_SUPPORT, const char * const prependLong=nullptr)
   );
 

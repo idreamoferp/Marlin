@@ -15,7 +15,11 @@
  * STM32G0C1R(C-E)IxN.xml, STM32G0C1R(C-E)TxN.xml
  * CubeMX DB release 6.0.30
  */
+<<<<<<< HEAD
 #if !defined(CUSTOM_PERIPHERAL_PINS)
+=======
+#ifndef CUSTOM_PERIPHERAL_PINS
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #include "Arduino.h"
 #include "PeripheralPins.h"
 

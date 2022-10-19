@@ -247,12 +247,20 @@
       b <<= 1; // little setup time
 
       WRITE(SD_SCK_PIN, HIGH);
+<<<<<<< HEAD
       DELAY_NS(spiDelayNS);
+=======
+      DELAY_NS_VAR(spiDelayNS);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
       b |= (READ(SD_MISO_PIN) != 0);
 
       WRITE(SD_SCK_PIN, LOW);
+<<<<<<< HEAD
       DELAY_NS(spiDelayNS);
+=======
+      DELAY_NS_VAR(spiDelayNS);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     } while (--bits);
     return b;
   }

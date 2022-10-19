@@ -304,7 +304,11 @@ def Upload(source, target, env):
     except KeyboardInterrupt:
         print('Aborted by user')
         if filetransfer: filetransfer.abort()
+<<<<<<< HEAD
         if protocol: 
+=======
+        if protocol:
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
             protocol.disconnect()
             protocol.shutdown()
         _RollbackUpload(upload_firmware_target_name)
@@ -314,7 +318,11 @@ def Upload(source, target, env):
     except serial.SerialException as se:
         # This exception is raised only for send_ascii data (not for binary transfer)
         print(f'Serial excepion: {se}, transfer aborted')
+<<<<<<< HEAD
         if protocol: 
+=======
+        if protocol:
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
             protocol.disconnect()
             protocol.shutdown()
         _RollbackUpload(upload_firmware_target_name)
@@ -323,7 +331,11 @@ def Upload(source, target, env):
 
     except MarlinBinaryProtocol.FatalError:
         print('Too many retries, transfer aborted')
+<<<<<<< HEAD
         if protocol: 
+=======
+        if protocol:
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
             protocol.disconnect()
             protocol.shutdown()
         _RollbackUpload(upload_firmware_target_name)
@@ -332,7 +344,11 @@ def Upload(source, target, env):
 
     except Exception as ex:
         print(f"\nException: {ex}, transfer aborted")
+<<<<<<< HEAD
         if protocol: 
+=======
+        if protocol:
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
             protocol.disconnect()
             protocol.shutdown()
         _RollbackUpload(upload_firmware_target_name)

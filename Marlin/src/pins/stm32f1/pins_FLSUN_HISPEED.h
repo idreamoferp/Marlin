@@ -68,8 +68,13 @@
 #define SPI_DEVICE                             2
 
 // SPI Flash
+<<<<<<< HEAD
 #define HAS_SPI_FLASH                          1
 #if HAS_SPI_FLASH
+=======
+#define SPI_FLASH
+#if ENABLED(SPI_FLASH)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   // SPI 2
   #define SPI_FLASH_CS_PIN                  PB12  // SPI2_NSS / Flash chip-select
   #define SPI_FLASH_MOSI_PIN                PB15

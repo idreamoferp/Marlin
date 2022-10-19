@@ -419,7 +419,10 @@ namespace Language_sk {
   LSTR MSG_ADVANCE_K_E                    = _UxGT("K pre posun *");
   LSTR MSG_CONTRAST                       = _UxGT("Kontrast LCD");
   LSTR MSG_BRIGHTNESS                     = _UxGT("Jas LCD");
+<<<<<<< HEAD
   LSTR MSG_LCD_TIMEOUT_SEC                = _UxGT("Čas. limit LCD (s)");
+=======
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   LSTR MSG_SCREEN_TIMEOUT                 = _UxGT("Čas. limit LCD (m)");
   LSTR MSG_BRIGHTNESS_OFF                 = _UxGT("Podsviet. vyp.");
   LSTR MSG_STORE_EEPROM                   = _UxGT("Uložiť nastavenie");

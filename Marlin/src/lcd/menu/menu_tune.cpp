@@ -210,9 +210,13 @@ void menu_tune() {
   // Advance K:
   //
   #if ENABLED(LIN_ADVANCE) && DISABLED(SLIM_LCD_MENUS)
-    #if EXTRUDERS == 1
+    #if DISTINCT_E < 2
       EDIT_ITEM(float42_52, MSG_ADVANCE_K, &planner.extruder_advance_K[0], 0, 10);
+<<<<<<< HEAD
     #elif HAS_MULTI_EXTRUDER
+=======
+    #else
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
       EXTRUDER_LOOP()
         EDIT_ITEM_N(float42_52, e, MSG_ADVANCE_K_E, &planner.extruder_advance_K[e], 0, 10);
     #endif

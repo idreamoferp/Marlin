@@ -606,7 +606,11 @@ FORCE_INLINE void _draw_axis_value(const AxisEnum axis, const char *value, const
     const uint8_t progress = ui._get_progress();
     #if ENABLED(SDSUPPORT)
       lcd_put_u8str(F("SD"));
+<<<<<<< HEAD
     #elif ENABLED(LCD_SET_PROGRESS_MANUALLY)
+=======
+    #elif ENABLED(SET_PROGRESS_PERCENT)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
       lcd_put_u8str(F("P:"));
     #endif
     if (progress)

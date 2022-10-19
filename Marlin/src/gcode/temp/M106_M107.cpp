@@ -69,6 +69,7 @@ void GcodeSuite::M106() {
     const uint16_t t = parser.intval('T');
     if (t > 0) return thermalManager.set_temp_fan_speed(pfan, t);
   #endif
+<<<<<<< HEAD
 
   const uint16_t dspeed = parser.seen_test('A') ? thermalManager.fan_speed[active_extruder] : 255;
 
@@ -84,6 +85,25 @@ void GcodeSuite::M106() {
 
   if (!got_preset && parser.seenval('S'))
     speed = parser.value_ushort();
+=======
+
+  const uint16_t dspeed = parser.seen_test('A') ? thermalManager.fan_speed[active_extruder] : 255;
+
+  uint16_t speed = dspeed;
+
+  // Accept 'I' if temperature presets are defined
+  #if HAS_PREHEAT
+    const bool got_preset = parser.seenval('I');
+    if (got_preset) speed = ui.material_preset[_MIN(parser.value_byte(), PREHEAT_COUNT - 1)].fan_speed;
+  #else
+    constexpr bool got_preset = false;
+  #endif
+
+  if (!got_preset && parser.seenval('S'))
+    speed = parser.value_ushort();
+
+  TERN_(FOAMCUTTER_XYUV, speed *= 2.55); // Get command in % of max heat
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
   // Set speed, with constraint
   thermalManager.set_fan_speed(pfan, speed);

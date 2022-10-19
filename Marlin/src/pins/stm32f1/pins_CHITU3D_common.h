@@ -114,8 +114,13 @@
 #endif
 
 // SPI Flash
+<<<<<<< HEAD
 #define HAS_SPI_FLASH                          1
 #if HAS_SPI_FLASH
+=======
+#define SPI_FLASH
+#if ENABLED(SPI_FLASH)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   #define SPI_FLASH_SIZE                0x200000  // 2MB
 #endif
 

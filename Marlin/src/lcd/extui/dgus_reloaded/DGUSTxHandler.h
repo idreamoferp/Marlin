@@ -24,6 +24,11 @@
 #include "DGUSDisplay.h"
 #include "definition/DGUS_VP.h"
 
+<<<<<<< HEAD
+=======
+#define Swap16(val) ((uint16_t)(((uint16_t)(val) >> 8) | ((uint16_t)(val) << 8)))
+
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 namespace DGUSTxHandler {
 
   #if ENABLED(SDSUPPORT)

@@ -25,7 +25,10 @@
 #include "../sd/cardreader.h"
 #include "../module/motion.h"
 #include "../libs/buzzer.h"
+<<<<<<< HEAD
 
+=======
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #include "buttons.h"
 
 #if ENABLED(TOUCH_SCREEN_CALIBRATION)
@@ -36,7 +39,7 @@
   #define MULTI_E_MANUAL 1
 #endif
 
-#if HAS_DISPLAY
+#if HAS_PRINT_PROGRESS
   #include "../module/printcounter.h"
 #endif
 
@@ -86,6 +89,10 @@ typedef bool (*statusResetFunc_t)();
 #endif // HAS_WIRED_LCD
 
 #if EITHER(HAS_WIRED_LCD, DWIN_CREALITY_LCD_JYERSUI)
+<<<<<<< HEAD
+=======
+  #define LCD_WITH_BLINK 1
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   #define LCD_UPDATE_INTERVAL TERN(HAS_TOUCH_BUTTONS, 50, 100)
 #endif
 
@@ -270,6 +277,7 @@ public:
     FORCE_INLINE static void refresh_brightness() { set_brightness(brightness); }
   #endif
 
+<<<<<<< HEAD
   #if LCD_BACKLIGHT_TIMEOUT
     #define LCD_BKL_TIMEOUT_MIN 1u
     #define LCD_BKL_TIMEOUT_MAX UINT16_MAX // Slightly more than 18 hours
@@ -284,6 +292,21 @@ public:
     static void refresh_screen_timeout();
     static void sleep_on();
     static void sleep_off();
+=======
+  #if LCD_BACKLIGHT_TIMEOUT_MINS
+    static constexpr uint8_t backlight_timeout_min = 0;
+    static constexpr uint8_t backlight_timeout_max = 99;
+    static uint8_t backlight_timeout_minutes;
+    static millis_t backlight_off_ms;
+    static void refresh_backlight_timeout();
+  #elif HAS_DISPLAY_SLEEP
+    static constexpr uint8_t sleep_timeout_min = 0;
+    static constexpr uint8_t sleep_timeout_max = 99;
+    static uint8_t sleep_timeout_minutes;
+    static millis_t screen_timeout_millis;
+    static void refresh_screen_timeout();
+    static void sleep_display(const bool sleep=true);
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
   #endif
 
   #if HAS_DWIN_E3V2_BASIC
@@ -304,25 +327,41 @@ public:
       #define PROGRESS_SCALE 1U
       #define PROGRESS_MASK 0x7F
     #endif
-    #if ENABLED(LCD_SET_PROGRESS_MANUALLY)
+    #if ENABLED(SET_PROGRESS_PERCENT)
       static progress_t progress_override;
       static void set_progress(const progress_t p) { progress_override = _MIN(p, 100U * (PROGRESS_SCALE)); }
       static void set_progress_done() { progress_override = (PROGRESS_MASK + 1U) + 100U * (PROGRESS_SCALE); }
       static void progress_reset() { if (progress_override & (PROGRESS_MASK + 1U)) set_progress(0); }
     #endif
+<<<<<<< HEAD
     #if ENABLED(SHOW_REMAINING_TIME)
+=======
+    #if EITHER(SHOW_REMAINING_TIME, SET_PROGRESS_MANUALLY)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
       static uint32_t _calculated_remaining_time() {
         const duration_t elapsed = print_job_timer.duration();
         const progress_t progress = _get_progress();
         return progress ? elapsed.value * (100 * (PROGRESS_SCALE) - progress) / progress : 0;
       }
+<<<<<<< HEAD
       #if ENABLED(USE_M73_REMAINING_TIME)
+=======
+      #if ENABLED(SET_REMAINING_TIME)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
         static uint32_t remaining_time;
         FORCE_INLINE static void set_remaining_time(const uint32_t r) { remaining_time = r; }
         FORCE_INLINE static uint32_t get_remaining_time() { return remaining_time ?: _calculated_remaining_time(); }
         FORCE_INLINE static void reset_remaining_time() { set_remaining_time(0); }
       #else
         FORCE_INLINE static uint32_t get_remaining_time() { return _calculated_remaining_time(); }
+<<<<<<< HEAD
+=======
+      #endif
+      #if ENABLED(SET_INTERACTION_TIME)
+        static uint32_t interaction_time;
+        FORCE_INLINE static void set_interaction_time(const uint32_t r) { interaction_time = r; }
+        FORCE_INLINE static void reset_interaction_time() { set_interaction_time(0); }
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
       #endif
     #endif
     static progress_t _get_progress();
@@ -330,6 +369,21 @@ public:
       FORCE_INLINE static uint16_t get_progress_permyriad() { return _get_progress(); }
     #endif
     static uint8_t get_progress_percent() { return uint8_t(_get_progress() / (PROGRESS_SCALE)); }
+    #if LCD_WITH_BLINK
+      #if ENABLED(SHOW_PROGRESS_PERCENT)
+        static void drawPercent();
+      #endif
+      #if ENABLED(SHOW_ELAPSED_TIME)
+        static void drawElapsed();
+      #endif
+      #if ENABLED(SHOW_REMAINING_TIME)
+        static void drawRemain();
+      #endif
+      #if ENABLED(SHOW_INTERACTION_TIME)
+        static void drawInter();
+      #endif
+      static void rotate_progress();
+    #endif
   #else
     static constexpr uint8_t get_progress_percent() { return 0; }
   #endif
@@ -391,7 +445,11 @@ public:
       static void poweroff();
     #endif
 
+<<<<<<< HEAD
     #if EITHER(HAS_WIRED_LCD, DWIN_CREALITY_LCD_JYERSUI)
+=======
+    #if LCD_WITH_BLINK
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
       static bool get_blink();
     #endif
 
@@ -603,9 +661,15 @@ public:
     #endif
 
     static void draw_select_screen_prompt(FSTR_P const pref, const char * const string=nullptr, FSTR_P const suff=nullptr);
+<<<<<<< HEAD
 
   #else
 
+=======
+
+  #else
+
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     static void return_to_status() {}
 
     static constexpr bool on_status_screen() { return true; }
@@ -694,11 +758,15 @@ public:
 
     static void update_buttons();
 
+<<<<<<< HEAD
     #if HAS_ENCODER_NOISE
       #ifndef ENCODER_SAMPLES
         #define ENCODER_SAMPLES 10
       #endif
 
+=======
+    #if ENABLED(ENCODER_NOISE_FILTER)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
       /**
        * Some printers may have issues with EMI noise especially using a motherboard with 3.3V logic levels
        * it may cause the logical LOW to float into the undefined region and register as a logical HIGH

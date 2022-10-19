@@ -188,7 +188,11 @@ public:
   static void Draw_Print_Screen();
   static void Draw_Print_Filename(const bool reset=false);
   static void Draw_Print_ProgressBar();
+<<<<<<< HEAD
   #if ENABLED(USE_M73_REMAINING_TIME)
+=======
+  #if ENABLED(SET_REMAINING_TIME)
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     static void Draw_Print_ProgressRemain();
   #endif
   static void Draw_Print_ProgressElapsed();

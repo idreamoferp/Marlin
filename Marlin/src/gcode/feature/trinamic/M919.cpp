@@ -169,6 +169,18 @@ void GcodeSuite::M919() {
       #if AXIS_IS_TMC(K)
         case K_AXIS: TMC_SET_CHOPPER_TIME(K); break;
       #endif
+<<<<<<< HEAD
+=======
+      #if AXIS_IS_TMC(U)
+        case U_AXIS: TMC_SET_CHOPPER_TIME(U); break;
+      #endif
+      #if AXIS_IS_TMC(V)
+        case V_AXIS: TMC_SET_CHOPPER_TIME(V); break;
+      #endif
+      #if AXIS_IS_TMC(W)
+        case W_AXIS: TMC_SET_CHOPPER_TIME(W); break;
+      #endif
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
       #if HAS_E_CHOPPER
         case E_AXIS: {
@@ -236,6 +248,18 @@ void GcodeSuite::M919() {
     #if AXIS_IS_TMC(K)
       TMC_SAY_CHOPPER_TIME(K);
     #endif
+<<<<<<< HEAD
+=======
+    #if AXIS_IS_TMC(U)
+      TMC_SAY_CHOPPER_TIME(U);
+    #endif
+    #if AXIS_IS_TMC(V)
+      TMC_SAY_CHOPPER_TIME(V);
+    #endif
+    #if AXIS_IS_TMC(W)
+      TMC_SAY_CHOPPER_TIME(W);
+    #endif
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
     #if AXIS_IS_TMC(E0)
       TMC_SAY_CHOPPER_TIME(E0);
     #endif

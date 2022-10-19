@@ -17,7 +17,11 @@
  * STM32H753VIHx.xml, STM32H753VITx.xml
  * CubeMX DB release 6.0.30
  */
+<<<<<<< HEAD
 #if !defined(CUSTOM_PERIPHERAL_PINS)
+=======
+#ifndef CUSTOM_PERIPHERAL_PINS
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 #include "Arduino.h"
 #include "PeripheralPins.h"
 

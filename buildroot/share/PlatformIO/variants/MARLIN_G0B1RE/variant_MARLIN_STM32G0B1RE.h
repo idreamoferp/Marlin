@@ -124,6 +124,10 @@
 #define NUM_DIGITAL_PINS        62
 #define NUM_REMAP_PINS          2
 #define NUM_ANALOG_INPUTS       16
+<<<<<<< HEAD
+=======
+#define NUM_ANALOG_FIRST        PA0
+>>>>>>> e49c3dc0889f1a6b597701ceb69624bdf4365445
 
 // SPI definitions
 #ifndef PIN_SPI_SS
