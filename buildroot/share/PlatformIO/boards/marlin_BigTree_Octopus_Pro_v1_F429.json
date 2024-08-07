@@ -36,6 +36,7 @@
     "maximum_ram_size": 131072,
     "maximum_size": 1048576,
     "protocol": "stlink",
+    "offset_address": "0x8008000",
     "protocols": [
       "stlink",
       "dfu",
