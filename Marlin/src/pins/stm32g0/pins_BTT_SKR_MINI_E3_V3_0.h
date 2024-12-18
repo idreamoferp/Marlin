@@ -150,6 +150,8 @@
 #define FAN0_PIN                            PC6   // "FAN0"
 #define FAN1_PIN                            PC7   // "FAN1"
 #define FAN2_PIN                            PB15  // "FAN2"
+#define FAN3_PIN                            PC8   // "FAN1"
+#define FAN4_PIN                            PC9  // "FAN2"
 
 /**
  *              SKR Mini E3 V3.0
