@@ -62,6 +62,7 @@
 #define E2_DIAG_PIN                         PG14  // E2DET
 #define E3_DIAG_PIN                         PG15  // E3DET
 
+#define I_STOP_PIN                          Z2_DIAG_PIN
 //
 // Limit Switches
 //
