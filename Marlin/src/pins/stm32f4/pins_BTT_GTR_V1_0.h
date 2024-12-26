@@ -63,6 +63,17 @@
 #define E1_DIAG_PIN                         PG9   // Y+
 #define E2_DIAG_PIN                         PD3   // Z+
 
+
+//
+// SPINDLE & EXTRA FEATURES
+//
+#define SPINDLE_LASER_PWM_PIN               PB1   // Heater0
+#define SPINDLE_DIR_PIN                     PA1   // Heater1
+// #define HEATER_2_PIN                        PB0   // Heater2
+#define AIR_EVACUATION_PIN                  PE5   // Fan0
+#define COOLANT_FLOOD_PIN                   PE6   // Fan1
+#define COOLANT_MIST_PIN                    PC8   // Fan2
+#define FREEZE_PIN                          PD3   //E3 DIAG            
 //
 // Limit Switches
 //
@@ -101,6 +112,8 @@
   #define Z_MIN_PIN                   Z_DIAG_PIN  // Z-
   #define Z_MAX_PIN                  E2_DIAG_PIN  // Z+
 #endif
+
+#define I_STOP_PIN                          E2_DIAG_PIN
 
 //
 // Pins on the extender
@@ -157,6 +170,13 @@
 #define Z_ENABLE_PIN                        PB9
 #ifndef Z_CS_PIN
   #define Z_CS_PIN                          PB5
+#endif
+
+#define I_STEP_PIN                         PG12
+#define I_DIR_PIN                          PG11
+#define I_ENABLE_PIN                       PG13
+#ifndef I_CS_PIN
+  #define I_CS_PIN                         PG10
 #endif
 
 #define E0_STEP_PIN                         PG12
@@ -258,6 +278,7 @@
   #define Y_SERIAL_TX_PIN                   PE1
   #define Z_SERIAL_TX_PIN                   PB5
   #define E0_SERIAL_TX_PIN                  PG10
+  #define I_SERIAL_TX_PIN                  PG10
   #define E1_SERIAL_TX_PIN                  PD4
   #define E2_SERIAL_TX_PIN                  PC12
   #if ENABLED(M5_EXTENDER)
